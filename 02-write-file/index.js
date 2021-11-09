@@ -1,13 +1,22 @@
-/* const { stdin, stdout } = process; */
+const { stdin, stdout } = process;
 const fs = require('fs');
 /* const path = require('path'); */
 
-fs.readFile('./text.txt', 'utf-8', (error, data) => {
 
-  fs.writeFile('./text1.txt', data, () => {
 
-  });
+
+stdout.write('Привет! Напиши текст\n');
+stdin.on('data', data => {
+  fs.writeFile('./02-write-file/text1.txt', `stdout.write${data} data`, () => {
+
 });
+  stdout.write('Твой текст: ');
+  stdout.write(data);
+  process.exit();
+});
+process.on('exit', () => stdout.write('Удачи!'));
+
+
 
 
 /* stdout.write('Привет\n');
